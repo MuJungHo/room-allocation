@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+}
+.input-field {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    & .input-add {
+        padding: 5px;
+    }
+    & .input-des {
+        padding: 5px;
+    }
+}
