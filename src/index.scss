@@ -3,7 +3,6 @@ body {
 }
 .input-field {
     display: flex;
-    padding: 5px;
     align-items: center;
     .button {
         padding: 5px;
@@ -11,7 +10,18 @@ body {
         width: 48px;
         line-height: 48px;
         border-radius: 4px;
+        border: 1px solid #ACD6FF;
+        color: #ACD6FF;
+        text-align: center;
+    }
+    .input {
+        padding: 5px;
+        height: 48px;
+        width: 48px;
+        line-height: 48px;
+        border-radius: 4px;
         border: 1px solid #bebebe;
         text-align: center;
+        margin: 0 8px;
     }
 }

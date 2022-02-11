@@ -10,6 +10,9 @@ const CustomInputNumber = ({
   onChange
 }) => {
   let inputRef = useRef();
+  let intervalID;
+  const [isUp, setUp] = React.useState(false)
+  const [isDown, setDown] = React.useState(false)
   React.useEffect(() => {
     if (inputRef && inputRef.current) {
       inputRef.current.addEventListener('up', (e) => {
@@ -22,10 +25,31 @@ const CustomInputNumber = ({
       }, false)
     }
   }, [])
+  React.useEffect(() => {
+    if (isUp) {
+      intervalID = setInterval(() => {
+        if (inputRef && inputRef.current) inputRef.current.dispatchEvent(new Event('up'))
+      }, 100);
+    }
+    return () => {
+      clearInterval(intervalID);
+    }
+  }, [isUp]);
+  React.useEffect(() => {
+    if (isDown) {
+      intervalID = setInterval(() => {
+        if (inputRef && inputRef.current) inputRef.current.dispatchEvent(new Event('down'))
+      }, 100);
+    }
+    return () => {
+      clearInterval(intervalID);
+    }
+  }, [isDown]);
   return (
     <div className="input-field">
-      <div className="button" onClick={() => inputRef.current.dispatchEvent(new Event('up'))}>+</div>
+      <div className="button" onMouseDown={() => setUp(true)} onMouseMove={() => setUp(false)} onMouseUp={() => setUp(false)}>+</div>
       <input
+        className="input"
         type="number"
         ref={inputRef}
         min={min}
@@ -37,7 +61,7 @@ const CustomInputNumber = ({
         onBlur={onBlur}
         onChange={onChange}
       />
-      <div className="button" onClick={() => inputRef.current.dispatchEvent(new Event('down'))}>-</div>
+      <div className="button" onMouseDown={() => setDown(true)} onMouseMove={() => setDown(false)} onMouseUp={() => setDown(false)}>-</div>
     </div>
   )
 }
