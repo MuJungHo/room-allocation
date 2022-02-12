@@ -11,26 +11,6 @@ const CustomInputNumber = ({
   onChange
 }) => {
   let inputRef = useRef();
-  React.useEffect(() => {
-    if (inputRef && inputRef.current) {
-      inputRef.current.addEventListener('up', (e) => {
-        if (Number(e.target.value) + Number(e.target.step) < e.target.max) {
-          e.target.value = Number(e.target.value) + Number(e.target.step)
-        } else {
-          e.target.value = e.target.max
-        }
-        onChange(e)
-      }, false)
-      inputRef.current.addEventListener('down', (e) => {
-        if (Number(e.target.value) - Number(e.target.step) > e.target.min) {
-          e.target.value = Number(e.target.value) - Number(e.target.step)
-        } else {
-          e.target.value = e.target.min
-        }
-        onChange(e)
-      }, false)
-    }
-  }, [])
   return (
     <div className="input-field">
       <Button inputRef={inputRef} disabled={disabled} type="up" />
