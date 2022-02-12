@@ -4,11 +4,14 @@ import CustomInputNumber from './custom/CustomInputNumber';
 const Room = ({ room, onChange, disabled }) => {
   return (
     <div className="room">
-      <span>{`房間: ${room.adult + room.child} 人 `}</span>
-      {room.adult + room.child === 4 && <span>( 房間已滿 )</span>}
+      <div>
+        <span className="title">{`房間: ${room.adult + room.child} 人 `}</span>
+        {room.adult + room.child === 4 && <span>( 房間已滿 )</span>}
+      </div>
       <div className="flex">
         <div className="spacer">
-          <span>大人</span>
+          <div><span>大人</span></div>
+          <div><span className="subtitle">年齡 20 +</span></div>
         </div>
         <CustomInputNumber
           value={room.adult}

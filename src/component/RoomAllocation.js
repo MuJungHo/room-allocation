@@ -43,8 +43,8 @@ const RoomAllocation = ({
   }
   return (
     <div className="container">
-      <div><span>{`住客人數: ${guest} 人 / ${room} 房`}</span></div>
-      <div><span>{`尚未分配人數: ${guest - total}`}</span></div>
+      <div className="margin"><span className="title">{`住客人數: ${guest} 人 / ${room} 房`}</span></div>
+      <div className="unassigned"><span>{`尚未分配人數: ${guest - total}`}</span></div>
       {
         Object.values(state).map(room_ =>
           <Room
@@ -54,6 +54,7 @@ const RoomAllocation = ({
             disabled={guest <= total}
           />)
       }
+      {room <= 0 && <div className="margin"><span>未設定房間數</span></div>}
     </div>
   )
 }

@@ -6,7 +6,7 @@ function App() {
   return (
     <RoomAllocation
       guest={12}
-      room={4}
+      room={3}
       onChange={result => console.log(result)}
     />
   );

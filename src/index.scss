@@ -17,10 +17,26 @@ input[type=number] {
 .spacer {
     flex: 1;
 }
-
+.title {
+    font-weight: bold;
+}
+.subtitle {
+    color: #afafaf;
+}
+.margin {
+    margin: 20px
+}
+.unassigned {
+    margin: 0 20px;
+    padding: 20px;
+    
+    background-color: #effdff;
+    border: 1px solid #b6f8ff;
+}
 .container {
     width: 360px;
     border: 1px solid #bebebe;
+    padding-bottom: 20px;
     .room {
         margin: 20px;
         padding-bottom: 20px;
@@ -39,13 +55,17 @@ input[type=number] {
         padding: 5px;
         height: 48px;
         width: 48px;
-        line-height: 48px;
+        line-height: 40px;
         border-radius: 4px;
         text-align: center;
+    }
+    .add {
+        line-height: 48px;
     }
     .button {
         border: 1px solid #ACD6FF;
         color: #ACD6FF;
+        font-size: 48px;
         cursor: pointer;
     }
     .input {

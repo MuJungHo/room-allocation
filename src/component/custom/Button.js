@@ -23,11 +23,11 @@ const Button = ({ inputRef, type, disabled }) => {
   }, [isPress, disabled]);
   return (
     <div
-      className={`button box ${disabled ? 'disabled' : ''}`}
+      className={`button box ${disabled ? 'disabled' : ''} ${type === 'up' ? 'add' : ''}`}
       onMouseDown={() => setPress(true)}
       onMouseMove={() => setPress(false)}
       onMouseUp={() => setPress(false)}>
-      {type}
+      {type === 'up' ? '+' : '–'}
     </div>
   )
 }
