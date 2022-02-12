@@ -4,7 +4,11 @@ import RoomAllocation from './component/RoomAllocation';
 function App() {
 
   return (
-    <RoomAllocation guest={10} room={3} onChange={result => console.log(result)}/>
+    <RoomAllocation
+      guest={12}
+      room={4}
+      onChange={result => console.log(result)}
+    />
   );
 }
 

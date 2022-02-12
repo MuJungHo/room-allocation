@@ -3,7 +3,8 @@ import Room from './Room';
 
 const RoomAllocation = ({
   guest,
-  room
+  room,
+  onChange
 }) => {
   var state_ = []
   for (let i = 0; i < room; i++) {
@@ -21,7 +22,7 @@ const RoomAllocation = ({
     }
   }, { adult: 0, child: 0 });
   const total = count.adult + count.child;
-  const onChange = (value, key, room) => {
+  const onChange_ = (value, key, room) => {
     setState({
       ...state,
       ['room_' + room.id]: {
@@ -29,6 +30,16 @@ const RoomAllocation = ({
         [key]: Number(value)
       }
     })
+    onChange(Object.values({
+      ...state,
+      ['room_' + room.id]: {
+        ...room,
+        [key]: Number(value)
+      }
+    }).map(result => ({
+      adult: result.adult,
+      child: result.child,
+    })))
   }
   return (
     <div className="container">
@@ -39,7 +50,7 @@ const RoomAllocation = ({
           <Room
             key={room_.id}
             room={room_}
-            onChange={onChange}
+            onChange={onChange_}
             disabled={guest <= total}
           />)
       }
