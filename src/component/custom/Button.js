@@ -15,12 +15,12 @@ const Button = ({ inputRef, type, disabled }) => {
           type === 'up' ? inputRef.current.stepUp() : inputRef.current.stepDown()
           inputRef.current.dispatchEvent(event);
         }
-      }, 100);
+      }, 200);
     }
     return () => {
       clearInterval(intervalID);
     }
-  }, [isPress]);
+  }, [isPress, disabled]);
   return (
     <div
       className={`button box ${disabled ? 'disabled' : ''}`}

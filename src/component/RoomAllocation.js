@@ -21,7 +21,6 @@ const RoomAllocation = ({
     }
   }, { adult: 0, child: 0 });
   const total = count.adult + count.child;
-  console.log(total);
   const onChange = (value, key, room) => {
     setState({
       ...state,
@@ -35,10 +34,14 @@ const RoomAllocation = ({
     <div className="container">
       <div><span>{`住客人數: ${guest} 人 / ${room} 房`}</span></div>
       <div><span>{`尚未分配人數: ${guest - total}`}</span></div>
-
-      {/* {JSON.stringify(Object.values(state))} */}
       {
-        Object.values(state).map(room => <Room key={room.id} room={room} onChange={onChange} />)
+        Object.values(state).map(room_ =>
+          <Room
+            key={room_.id}
+            room={room_}
+            onChange={onChange}
+            disabled={guest <= total}
+          />)
       }
     </div>
   )
