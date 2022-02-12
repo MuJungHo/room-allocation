@@ -1,41 +1,44 @@
 import React from 'react';
-import CustomInputNumber from './custom/CustomInputNumber';
+import Room from './Room';
 
-const RoomAllocation = () => {
-  const [state, setState] = React.useState([
-    { id: 1, adult: 1, child: 0 },
-    { id: 2, adult: 1, child: 0 },
-  ])
-  const onChange = (e, room) => {
-    console.log(e)
-    const updated = state.map(room_ => {
-      if (room_.id === room.id) {
-        return {
-          ...room,
-          adult: Number(e.target.value)
-        }
-      } else {
-        return { ...room_ }
+const RoomAllocation = ({
+  guest,
+  room
+}) => {
+  var state_ = []
+  for (let i = 0; i < room; i++) {
+    state_['room_' + i] = {
+      id: i,
+      adult: 1,
+      child: 0
+    }
+  }
+  const [state, setState] = React.useState(state_)
+  const count = Object.values(state).reduce((total, currentObj) => {
+    return {
+      adult: total.adult + currentObj.adult,
+      child: total.child + currentObj.child,
+    }
+  }, { adult: 0, child: 0 });
+  const total = count.adult + count.child;
+  console.log(total);
+  const onChange = (value, key, room) => {
+    setState({
+      ...state,
+      ['room_' + room.id]: {
+        ...room,
+        [key]: Number(value)
       }
     })
-    setState(updated)
   }
   return (
-    <div>
-      {
-        state.map(room => <input type="number" key={room.id} value={room.adult} onChange={e => onChange(e, room)} />)
-      }
+    <div className="container">
+      <div><span>{`住客人數: ${guest} 人 / ${room} 房`}</span></div>
+      <div><span>{`尚未分配人數: ${guest - total}`}</span></div>
 
+      {/* {JSON.stringify(Object.values(state))} */}
       {
-        state.map(room => <CustomInputNumber
-          id={room.id}
-          key={room.id}
-          value={room.adult}
-          max={10}
-          min={1}
-          step={1}
-          onChange={e => onChange(e, room)}
-        />)
+        Object.values(state).map(room => <Room key={room.id} room={room} onChange={onChange} />)
       }
     </div>
   )
