@@ -18,8 +18,7 @@ const Room = ({ room, onChange, disabled }) => {
           max={10}
           min={1}
           step={1}
-          upDisabled={disabled || room.adult + room.child === 4}
-          downDisabled={disabled}
+          disabled={disabled || room.adult + room.child === 4}
           onChange={e => onChange(e.target.value, 'adult', room)}
         />
       </div>
@@ -32,8 +31,7 @@ const Room = ({ room, onChange, disabled }) => {
           max={10}
           min={0}
           step={1}
-          upDisabled={disabled || room.adult + room.child === 4}
-          downDisabled={disabled}
+          disabled={disabled || room.adult + room.child === 4}
           onChange={e => onChange(e.target.value, 'child', room)}
         />
       </div>

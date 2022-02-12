@@ -6,15 +6,14 @@ const CustomInputNumber = ({
   step,
   name,
   value,
-  upDisabled,
-  downDisabled,
+  disabled,
   onBlur,
   onChange
 }) => {
   let inputRef = useRef();
   return (
     <div className="input-field">
-      <Button inputRef={inputRef} disabled={upDisabled} type="up" />
+      <Button inputRef={inputRef} disabled={disabled} type="up" />
       <input
         className="box input"
         type="number"
@@ -24,11 +23,11 @@ const CustomInputNumber = ({
         step={step}
         name={name}
         value={value}
-        disabled={upDisabled || downDisabled}
+        disabled={disabled}
         onBlur={onBlur}
         onChange={onChange}
       />
-      <Button inputRef={inputRef} disabled={downDisabled} type="down" />
+      <Button inputRef={inputRef} disabled={disabled} type="down" />
     </div>
   )
 }
