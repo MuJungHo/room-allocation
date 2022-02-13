@@ -1,10 +1,13 @@
 # Room Allocation
 
-## 專案執行說明
-1. 在專案的根目錄下輸入 ```npm install ``` 。（環境需求 node.js）
+## 專案環境
+webpack 5 + Babel 7 + React 17。
+
+## 專案執行
+1. Command Line 在專案的根目錄下輸入 ```npm install ``` 。
 2. 安裝完成後再輸入 ```npm run dev``` 。
 
-## 專案功能說明
+## 專案功能
 ### CustomInputNumber
 1. 點擊加號使 value 等於 max 時繼續點擊, onChange 將無後續觸發。
 2. 點擊減號使 value 等於 min 時繼續點擊, onChange 將無後續觸發。
@@ -30,10 +33,14 @@ const App = () => {
 2. 可調整房間分配人數並顯示尚未分配人數。
 3. onChange 將收到 result 回傳。
 ```
-<RoomAllocation
-    guest={10}
-    room={3}
-    onChange={result => console.log(result)}
-/>
+const App = () => {
+  return (
+    <RoomAllocation
+        guest={10}
+        room={3}
+        onChange={result => console.log(result)}
+    />
+  )
+}
 ```
 
