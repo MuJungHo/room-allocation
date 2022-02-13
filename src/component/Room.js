@@ -15,7 +15,7 @@ const Room = ({ room, onChange, disabled }) => {
         </div>
         <CustomInputNumber
           value={room.adult}
-          max={10}
+          max={4}
           min={1}
           step={1}
           disabled={disabled || room.adult + room.child === 4}
@@ -28,7 +28,7 @@ const Room = ({ room, onChange, disabled }) => {
         </div>
         <CustomInputNumber
           value={room.child}
-          max={10}
+          max={3}
           min={0}
           step={1}
           disabled={disabled || room.adult + room.child === 4}
