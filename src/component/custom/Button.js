@@ -15,7 +15,7 @@ const Button = ({ inputRef, type, disabled }) => {
           type === 'up' ? inputRef.current.stepUp() : inputRef.current.stepDown()
           inputRef.current.dispatchEvent(event);
         }
-      }, 200);
+      }, 150);
     }
     return () => {
       clearInterval(intervalID);
